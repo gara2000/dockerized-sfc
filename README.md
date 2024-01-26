@@ -3,7 +3,7 @@
 ## Overview
 
 This repository provides a simplified architecture for Service Function Chaining using Docker containers.
-![Architecture Diagram](ArchitectureDiagram.png)
+![Architecture Diagram](diagrams/ArchitectureDiagram.png)
 
 The architecture consists of two principal chains:
 
@@ -14,7 +14,7 @@ The Firewall listens for HTTP connections on the address 172.0.0.2. Requests flo
 The classifier controls communication between the frontend and backend. The frontend server makes HTTP requests to the classifier, redirecting them to the API gateway, which identifies the requested microservice.
 
 **Note:** The architecture can be extended by adding additional microservices, load balancers, and database servers for each microservice.
-![Architecture Diagram](ArchitectureExtensionDiagram.png)
+![Architecture Diagram](diagrams/ArchitectureExtensionDiagram.png)
 
 ## Prerequisites
 Running this project requires installing Docker and Docker Compose on your system.
