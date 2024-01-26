@@ -7,10 +7,12 @@ This repository provides a simplified architecture for Service Function Chaining
 
 The architecture consists of two principal chains:
 
-### First Chain: Firewall - Classifier - Frontend
+### First Chain
+#### Firewall - Classifier - Frontend
 The Firewall listens for HTTP connections on the address 172.0.0.2. Requests flow through the classifier to the frontend container, and responses are sent back to the firewall to present the user interface.
 
-### Second Chain: Frontend - Classifier - Api gateway - User Management Microservice
+### Second Chain
+#### Frontend - Classifier - Api gateway - User Management Microservice
 The classifier controls communication between the frontend and backend. The frontend server makes HTTP requests to the classifier, redirecting them to the API gateway, which identifies the requested microservice.
 
 **Note:** The architecture can be extended by adding additional microservices, load balancers, and database servers for each microservice.
