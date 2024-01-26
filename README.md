@@ -45,6 +45,7 @@ Running this project requires installing Docker and Docker Compose on your syste
     ```
 
 4. Access the user interface:
+
     Visit http://172.0.0.2 to access the user interface.
 
 5. Stop the containers:
