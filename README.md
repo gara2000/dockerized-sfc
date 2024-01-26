@@ -60,4 +60,4 @@ Running this project requires installing Docker and Docker Compose on your syste
 This project is licensed under the GNU GENERAL PUBLIC LICENSE, Version 3, 29 June 2007.
 
 ## Reference
-Users' table on the UI from: [https://codepen.io/bartaxyz/pen/DZJwQX]
+The user table displayed on the user interface has been obtained from this [project](https://codepen.io/bartaxyz/pen/DZJwQX).
