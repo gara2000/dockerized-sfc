@@ -34,13 +34,13 @@ Running this project requires installing Docker and Docker Compose on your syste
 
 2. Build the Docker images:
     ```bash
-    chmod +x build.sh
+    chmod +x build.sh # Run this once
     ./build.sh
     ```
 
 3. Start the containers:
     ```bash
-    chmod +x run.sh
+    chmod +x run.sh # Run this once
     ./run.sh
     ```
 
