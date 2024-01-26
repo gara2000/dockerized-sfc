@@ -1,0 +1,40 @@
+http:
+  port: 8080
+  host: 0.0.0.0
+
+admin:
+  port: 9876
+  host: 172.3.0.3
+
+apiEndpoints:
+  api:
+    host: 172.3.0.3
+    paths: '/api/user/*'
+
+serviceEndpoints:
+  user:
+    url: 'http://172.4.0.3:3000'
+
+policies:
+  - basic-auth
+  - cors
+  - expression
+  - key-auth
+  - log
+  - oauth2
+  - proxy
+  - rate-limit
+
+pipelines:
+  default:
+    apiEndpoints:
+      - api
+    policies:
+      - cors:
+          - action:
+              origin: "*"
+              methods: "GET,HEAD,PUT,PATCH,POST,DELETE"
+      - proxy:
+          - action:
+              serviceEndpoint: user
+              changeOrigin: true

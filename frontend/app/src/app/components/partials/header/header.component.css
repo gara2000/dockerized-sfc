@@ -1,0 +1,21 @@
+header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  -moz-box-shadow: 10px 10px 23px 0px rgba(0,0,0,0.1);
+  box-shadow: 10px 10px 23px 0px rgba(0,0,0,0.1);
+  vertical-align: middle;
+  background: #f4f4f4;
+  /* border: solid 5px #FFD32E; */
+  border-radius: 0.2rem;
+}
+
+h1{
+  margin: 1rem;
+}
+
+.text{
+  margin: 1rem;
+  text-align: center;
+}

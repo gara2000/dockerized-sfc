@@ -1,0 +1,11 @@
+<div class="body">
+    <div id="notebooks">
+      <ul id="notebook_ul">
+        <li *ngFor="let user of users" class="user">
+            <div class="name"><div class="label">Name:</div> {{user.name}}</div><br/>
+            <div class="address"><div class="label">Address:</div> {{user.address}}</div><br/>
+        </li>
+        <span>Number of Users: {{users.length}}</span>
+    </ul>
+    </div>
+</div>

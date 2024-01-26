@@ -1,0 +1,113 @@
+version: "3"
+
+services:
+  firewall:
+    container_name: firewall
+    image: sfc/firewall:1.0
+    build:
+      context: ./firewall
+      dockerfile: Dockerfile
+    cap_add:
+      - NET_ADMIN
+    networks:
+      user_network:
+        ipv4_address: 172.0.0.2
+      fw_class_network:
+        ipv4_address: 172.1.0.2
+    ports:
+      - "80:80"
+
+  classifier:
+    container_name: classifier
+    image: sfc/classifier:1.0
+    build:
+      context: ./classifier
+      dockerfile: Dockerfile
+    cap_add:
+      - NET_ADMIN
+    networks:
+      fw_class_network:
+        ipv4_address: 172.1.0.3
+      class_fe_network:
+        ipv4_address: 172.2.0.2
+      class_be_network:
+        ipv4_address: 172.3.0.2
+      class_db_network:
+        ipv4_address: 172.5.0.2
+
+  frontend:
+    container_name: frontend
+    image: sfc/frontend:1.0
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+    networks:
+      class_fe_network:
+        ipv4_address: 172.2.0.3
+
+  api_gateway:
+    container_name: api_gateway
+    image: sfc/api-gateway:1.0
+    build:
+      context: ./backend/api_gateway
+      dockerfile: Dockerfile
+    networks:
+      class_be_network:
+        ipv4_address: 172.3.0.3
+      backend_network:
+        ipv4_address: 172.4.0.2
+
+  user_management_service:
+    container_name: user_management
+    image: sfc/user-management-service:1.0
+    build:
+      context: ./backend/user_management_service
+      dockerfile: Dockerfile
+    networks:
+      backend_network:
+        ipv4_address: 172.4.0.3
+    
+networks:
+  user_network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.0.0.0/24
+
+  fw_class_network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.1.0.0/24
+
+  class_fe_network:
+    driver: bridge
+    ipam:
+      driver: default
+      config: 
+        - subnet: 172.2.0.0/24
+
+  class_be_network:
+    driver: bridge
+    ipam:
+      driver: default
+      config: 
+        - subnet: 172.3.0.0/24
+
+  backend_network:
+    driver: bridge
+    ipam:
+      driver: default
+      config: 
+        - subnet: 172.4.0.0/24
+  
+  class_db_network:
+    driver: bridge
+    ipam:
+      driver: default
+      config: 
+        - subnet: 172.5.0.0/24
+  
+    
